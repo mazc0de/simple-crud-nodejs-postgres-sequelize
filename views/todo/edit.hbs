@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <div class="card p-3 mt-3">
+      <form action="/edit/{{data.id}}?_method=put" method="post">
+        <div class="mb-3">
+          <label class="form-label">Assignee</label>
+          <input type="text" class="form-control" name="assignee" value="{{data.assignee}}" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">task</label>
+          <input type="text" class="form-control" name="task" value="{{data.task}}" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Due Date</label>
+          <input type="date" class="form-control" name="due_date" value="{{data.due_date}}" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Status</label>
+          <select class="form-select" name="status">
+            <option value="Ongoing">Ongoing</option>
+            <option value="Done">Done</option>
+            <option value="Past Due">Past Due</option>
+          </select>
+        </div>
+        <div style="float: right;">
+          <a href="/" class="btn btn-secondary">Cancel</a>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-3"></div>
+</div>

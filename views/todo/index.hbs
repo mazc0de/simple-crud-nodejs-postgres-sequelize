@@ -1,0 +1,71 @@
+<a href="/create" class="btn btn-primary my-3">Create to do</a>
+<div class="card p-3">
+  <div class="div">
+    <form action="/search">
+      <div class="my-3">
+        <label class="form-label">Search Task</label>
+        <input type="text" class="form-control" name="search">
+        <button type="submit" class="btn btn-sm btn-primary my-3" style="float:right;"><i class="fas fa-search"></i>
+          Search</button>
+      </div>
+    </form>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      {{#if data}}
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Assignee</th>
+            <th scope="col">Task</th>
+            <th scope="col">Status</th>
+            <th scope="col">Due Date</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each data}}
+          <tr>
+            <th scope="row">{{incremented @index}}</th>
+            <td>{{assignee}}</td>
+            <td>{{task}}</td>
+            <td>
+              {{#ifEquals status "Ongoing"}}
+              <span class="badge rounded-pill bg-primary">{{status}}</span>
+              {{/ifEquals}}
+              {{#ifEquals status "Done"}}
+              <span class="badge rounded-pill bg-success">{{status}}</span>
+              {{/ifEquals}}
+              {{#ifEquals status "Past Due"}}
+              <span class="badge rounded-pill bg-danger">{{status}}</span>
+              {{/ifEquals}}
+            </td>
+            <td>{{due_date}}</td>
+            <td>
+              <a href="/edit/{{id}}" class="btn btn-sm btn-success"><i class="fas fa-edit"></i> Edit</a>
+              <a href="/todo/{{id}}" class="btn btn-sm btn-warning"><i class="fas fa-eye"></i> View</a>
+              <form method="post" action="/delete/{{id}}?_method=DELETE" class="d-inline">
+                <input type="hidden" name="_method" value="DELETE" />
+                <button type="submit" class="btn btn-sm btn-danger"
+                  onclick="return confirm('Are you sure to delete?')"><i class="fas fa-trash-alt mr-1"></i>
+                  Delete</button>
+              </form>
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      {{else}}
+      <div class="card">
+        <div class="card-body">
+          <div class="alert alert-danger" role="alert">
+            Todos is'nt available
+          </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

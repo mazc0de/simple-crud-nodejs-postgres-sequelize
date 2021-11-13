@@ -1,0 +1,41 @@
+<a href="/create" class="btn btn-primary mt-5">Create to do</a>
+<div class="card p-3 mt-3">
+    <div class="div">
+        <form action="/search">
+            <div class="my-3">
+                <label class="form-label">Search Task</label>
+                <input type="text" class="form-control" name="search">
+                <button type="submit" class="btn btn-sm btn-primary mt-1" style="float:right;"><i
+                        class="fas fa-search"></i>
+                    Search</button>
+            </div>
+        </form>
+    </div>
+    <div class="row mt-3">
+        {{#each data}}
+        <div class="col-4 my-3 d-flex justify-content-center">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Assignee : {{assignee}}</h5>
+                    Status :
+                    {{#ifEquals status "Ongoing"}}
+                    <span class="badge rounded-pill bg-primary">{{status}}</span>
+                    {{/ifEquals}}
+                    {{#ifEquals status "Done"}}
+                    <span class="badge rounded-pill bg-success">{{status}}</span>
+                    {{/ifEquals}}
+                    {{#ifEquals status "Past Due"}}
+                    <span class="badge rounded-pill bg-danger">{{status}}</span>
+                    {{/ifEquals}}
+                    <p class="card-text">Task : {{task}}</p>
+                    <span class="card-text">Due Date : {{due_date}}</span>
+                    <div>
+
+                        <a href="/">Back</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

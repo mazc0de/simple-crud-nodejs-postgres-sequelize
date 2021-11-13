@@ -1,0 +1,27 @@
+<div class="row mt-5">
+  <div class="col-3"></div>
+  <div class="col-6 d-flex justify-content-center">
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Assignee : {{data.assignee}}</h5>
+        Status :
+        {{#ifEquals data.status "Ongoing"}}
+          <span class="badge rounded-pill bg-primary">{{data.status}}</span>
+        {{/ifEquals}}
+        {{#ifEquals data.status "Done"}}
+          <span class="badge rounded-pill bg-success">{{data.status}}</span>
+        {{/ifEquals}}
+        {{#ifEquals data.status "Past Due"}}
+          <span class="badge rounded-pill bg-danger">{{data.status}}</span>
+        {{/ifEquals}}
+        <p class="card-text">Task : {{data.task}}</p>
+        <span class="card-text">Due Date : {{data.due_date}}</span>
+        <div>
+
+          <a href="/">Back</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-3"></div>
+</div>
